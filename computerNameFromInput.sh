@@ -4,12 +4,7 @@ dialogApp="/usr/local/bin/dialog"
 title="Name This Mac"
 message="Enter the preferred computer name below"
 
-hwType=$(/usr/sbin/system_profiler SPHardwareDataType | grep "Model Identifier" | grep "Book")  
-if [ "$hwType" != "" ]; then
-  icon="SF=laptopcomputer"
-  else
-  icon="SF=desktopcomputer"
-fi
+icon="computer"
 
 dialogCMD="$dialogApp -p --title \"$title\" \
 --icon \"$icon\" \
@@ -19,6 +14,6 @@ dialogCMD="$dialogApp -p --title \"$title\" \
 
 computerName=$(eval "$dialogCMD" | awk -F " : " '{print $NF}')
 
-scutil --set HostName "$computerName"
-scutil --set LocalHostName "$computerName"
-scutil --set ComputerName "$computerName"
+scutil --set HostName "$computerName" || echo "Error setting HostName"
+scutil --set LocalHostName "$computerName" || echo "Error setting LocalHostName"
+scutil --set ComputerName "$computerName" ||  echo "Error setting ComputerName"
