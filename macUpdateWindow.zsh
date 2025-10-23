@@ -31,6 +31,6 @@ plannedDateTimeReadable=$(date -r "$plannedTimestamp" "+%I:%M %p")
 
 # If $currentTimestamp is within 1 hour of $plannedTimestamp, display dialog
 if [[ plannedDateTimeTimer -lt 3600 ]]; then
-    $dialogApp --movable --ontop --position bottomright --mini --timer $plannedDateTimeTimer --icon "SF=desktopcomputer.trianglebadge.exclamationmark,color=auto" --title none --message "This Mac will be installing updates at $plannedDateTimeReadable" &
+    $dialogApp --moveable --ontop --position bottomright --mini --timer $plannedDateTimeTimer --icon "SF=desktopcomputer.trianglebadge.exclamationmark,color=auto" --title none --message "This Mac will be installing updates at $plannedDateTimeReadable" &
     exit 0
 fi
