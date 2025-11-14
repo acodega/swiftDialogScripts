@@ -18,6 +18,8 @@ if [[ -z $plannedDateTime ]]; then
     exit 0
 fi
 
+# TODO: Planned date and time may be in the past after a user has updated. Check for that and don't alert them about an old deadline
+
 # Get the current date and time in the same style as $plannedDateTime
 currentDateTime=$(date "+%Y-%m-%dT%H:%M:%S")
 
